@@ -42,7 +42,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~bulma/sass/utilities/variables';
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/derived-variables';
 
 .switch {
   --height: 22px;
@@ -63,7 +64,7 @@ export default {
   border-radius: calc(0.8 * var(--height));
   width: calc(1.625 * var(--height));
   height: var(--height);
-  background-color: $border;
+  background-color: $grey-lighter;
   border: 1px solid $border;
   cursor: pointer;
   box-sizing: border-box;
@@ -104,7 +105,7 @@ export default {
   }
 
   // Colors
-  @each $name, $pair in $colors {
+  @each $name, $pair in ('white': ($white, $black), 'black': ($black, $white), 'light': ($light, $light-invert), 'dark': ($dark, $dark-invert), 'primary': ($primary, $primary-invert), 'info': ($info, $info-invert), 'success': ($success, $success-invert), 'warning': ($warning, $warning-invert), 'danger': ($danger, $danger-invert)) {
     $color: nth($pair, 1);
     &.is-#{$name} {
       &.checked {
